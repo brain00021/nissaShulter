@@ -1,0 +1,31 @@
+.header {
+  background: #eee9df;
+}
+
+.dropdown {
+  .dropdown-menu {
+    width: auto;
+    border: none;
+    padding: 0;
+  }
+  .btn-primary.dropdown-toggle {
+    background: transparent;
+    color: #999;
+    border: none;
+    &.btn-primary:hover,
+    &.btn-primary:focus,
+    &.btn-primary:active {
+      background: transparent;
+      /* Primary/yellow */
+      color: #d8a338;
+      border-color: none;
+    }
+  }
+  .btn-primary:not(:disabled):not(.disabled):active {
+    background: transparent;
+    color: #d8a338;
+  }
+  .dropdown-item:hover {
+    background: #eee9df;
+  }
+}
