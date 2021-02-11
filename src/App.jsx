@@ -16,6 +16,7 @@ import { Button , Alert } from 'react-bootstrap';
 import HomePage from './pages/HomePage.jsx';
 import AnimalList from './pages/AnimalList.jsx';
 import Header  from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
 import { useTranslation } from 'react-i18next';
 function App() {
@@ -38,6 +39,7 @@ function App() {
         {/* <button onClick={() => changeLanguage("fr")}>de</button>
         <button onClick={() => changeLanguage("en")}>en</button> */}
       </Switch>
+      <Footer/>
     </Router>
   );
 }

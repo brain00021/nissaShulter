@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Navbar,Nav,NavItem,Form,FormControl,Button,Dropdown} from 'react-bootstrap';
 import "assets/scss/header.scss";
+import heartIcon  from 'assets/img/icon/love.svg'
 import {
   BrowserRouter as Router,
   Link,
@@ -35,7 +36,7 @@ const Header =  () => {
             <NavItem eventkey={2} href="/about">
               <Nav.Link as={Link} to="/about" >領養浪浪</Nav.Link>
             </NavItem>
-          </Nav>
+          
           <Dropdown>
             <Dropdown.Toggle id="dropdown-basic">
               {lang}
@@ -46,17 +47,20 @@ const Header =  () => {
               <Dropdown.Item onClick={() => changeLanguage("en")}>EN</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-
-          <NavItem eventkey={2} href="/login">
+          <NavItem eventkey={3} href="/login">
+            <Nav.Link as={Link} to="/login" ><img src={heartIcon}/></Nav.Link>
+          </NavItem>
+          <NavItem eventkey={3} href="/login">
             <Nav.Link as={Link} to="/login" >登入</Nav.Link>
           </NavItem>
-          <NavItem eventkey={2} href="/signUp">
+          <NavItem eventkey={4} href="/signUp">
               <Nav.Link as={Link} to="/signUp" >註冊</Nav.Link>
             </NavItem>
           {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form> */}
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     </div>
