@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import {Container,DropdownButton,Dropdown,Button} from 'react-bootstrap';
+import 'assets/scss/filter.scss'
+
 
 const Filter = () => {
   // useEffect(() =>{
@@ -41,7 +44,46 @@ const Filter = () => {
     // })
   // })
   return (
-    <span>Filter 的設計搞</span>
+    <Container id="filterWrapper" >
+      <h2>尋找我的毛小孩 </h2>
+      <h6>找尋距離近的收容所，快速搜尋附近的毛小孩</h6>
+      <div className="filterSection">
+      <DropdownButton
+       
+        menuAlign="left"
+        title="板橋區"
+        id="county"
+      >
+        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+      </DropdownButton>
+      <span className="filterBorder"></span>
+      <DropdownButton
+        className="dropdownToggle"
+        menuAlign="left"
+        title="板橋區"
+        id="county"
+      >
+        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+      </DropdownButton>
+      <span className="filterBorder"></span>
+      <DropdownButton
+        className="dropdownToggle"
+        menuAlign="left"
+        title="板橋區"
+        id="county"
+      >
+        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+      </DropdownButton>
+      <span className="filterBorder"></span>
+      <Button className="filterButton"> 開始搜尋 </Button>
+      </div>
+    </Container>
   )
 }
 export default Filter;

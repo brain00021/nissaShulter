@@ -1,5 +1,22 @@
 .indexBg {
-  background: url("../img/index_bg.jpg") repeat 0 -50px;
+  background: url("../img/index_bg.jpg") repeat 0 -30px;
   background-size: 100%;
   min-height: 1500px;
+  box-sizing: border-box;
+  padding-top: 50px;
+}
+.IndexAnimalCard {
+  margin: 20px auto;
+  margin-top: 142px;
+  font-family: GenSenRounded JP;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* 尋找我的毛小孩 */
+  // margin: 30px auto;
+  /* Achromatic/dark grey */
+  color: #444544;
+  h6 {
+    margin-bottom: 84px;
+  }
 }

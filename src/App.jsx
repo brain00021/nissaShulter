@@ -23,7 +23,7 @@ function App() {
   const { t, i18n } = useTranslation();
   return (
     <Router>
-      <h1>{t('Welcome to React')}</h1>
+      {/* <h1>{t('Welcome to React')}</h1> */}
 
       <Header/>
       <Switch>

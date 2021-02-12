@@ -1,12 +1,39 @@
 .header {
   background: #eee9df;
 }
-
+.navbar-nav {
+  align-items: center;
+  justify-content: space-around;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #333333;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    color: #d8a338;
+  }
+}
+.favoriteIcon.nav-link {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+  background: url(../img/icon/love.svg) no-repeat center center;
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background: url(../img/icon/header-love-active.svg) no-repeat center center;
+  }
+}
 .dropdown {
   .dropdown-menu {
     width: auto;
     border: none;
     padding: 0;
+    &.show {
+      min-width: 0;
+    }
   }
   .btn-primary.dropdown-toggle {
     background: transparent;
@@ -19,6 +46,15 @@
       /* Primary/yellow */
       color: #d8a338;
       border-color: none;
+      &::after {
+        display: inline-block;
+        background: #d8a338;
+        width: 10px;
+        height: 10px;
+        border: none;
+        vertical-align: middle;
+        position: relative;
+      }
     }
   }
   .btn-primary:not(:disabled):not(.disabled):active {
@@ -28,4 +64,17 @@
   .dropdown-item:hover {
     background: #eee9df;
   }
+
+  .dropdown-toggle::after {
+    display: inline-block;
+    background: url(../img/icon/arrow-down.png) no-repeat center center;
+    width: 10px;
+    height: 5px;
+    border: none;
+    vertical-align: middle;
+    position: relative;
+  }
+}
+.dropdown-menu {
+  box-shadow: 0 0 5px rgba(#000, 0.2);
 }

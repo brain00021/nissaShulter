@@ -1,0 +1,78 @@
+#filterWrapper {
+  /* 尋找我的毛小孩 */
+  font-family: GenSenRounded JP;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 40px;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* 尋找我的毛小孩 */
+  // margin: 30px auto;
+  /* Achromatic/dark grey */
+  color: #444544;
+
+  .filterSection {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    max-width: 872px;
+    margin: 0 auto;
+    margin-top: 42px;
+    justify-content: space-around;
+    .dropdown {
+      display: flex;
+      align-items: center;
+      min-width: 20%;
+      .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+
+        &::after {
+          position: absolute;
+          right: 10px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+        &.btn-primary:hover,
+        &.btn-primary:focus,
+        &.btn-primary:active {
+          background: transparent;
+          /* Primary/yellow */
+          color: #444544;
+          border-color: none;
+          &::after {
+            background: url(../img/icon/arrow-down.png) no-repeat center center;
+            transform: rotate(-180deg);
+          }
+        }
+      }
+    }
+    // .dropdown .dropdown-toggle::after {
+    //   background: yellow;
+    // }
+    .filterButton {
+      background: #d8a338;
+      border: none;
+      padding: 8px 40px;
+      font-family: Noto Sans TC;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 29px;
+      color: #ffffff;
+    }
+  }
+
+  .filterBorder {
+    height: 60px;
+    width: 1px;
+    border-right: 1px solid #e0e0e0;
+  }
+}
