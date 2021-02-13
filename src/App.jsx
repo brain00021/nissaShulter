@@ -18,14 +18,19 @@ import AnimalList from './pages/AnimalList.jsx';
 import Header  from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
+
 import { useTranslation } from 'react-i18next';
+
+
+// fontawesome.library.add(faCheckSquare, faCoffee);
 function App() {
   const { t, i18n } = useTranslation();
   return (
     <Router>
       {/* <h1>{t('Welcome to React')}</h1> */}
-
+      
       <Header/>
+      
       <Switch>
         <Route exact path="/">
           <HomePage />

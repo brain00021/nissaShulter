@@ -1,0 +1,33 @@
+.informationImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: auto;
+  background: #fff;
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg path {
+    fill: #d8a338;
+  }
+}
+.informationText {
+  h4 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 41px;
+    text-align: center;
+    color: #333333;
+  }
+  p {
+    font-family: Noto Sans TC;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: left;
+    color: #333333;
+  }
+}

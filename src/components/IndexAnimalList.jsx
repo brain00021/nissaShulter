@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"
+import {
+  BrowserRouter as Router,
+  Link,
+} from "react-router-dom";
 import {Container,Row,Col,DropdownButton,Dropdown,Button} from 'react-bootstrap';
 import 'assets/scss/filter.scss'
 import AnimalCard from 'components/AnimalCard';
@@ -20,6 +24,9 @@ const IndexAnimalList = () => {
         <AnimalCard></AnimalCard>
         </Col>
       </Row>
+      <div className="btnWrapper">
+        <Link to="/about" className="defaultBtn">尋找更多的狗狗</Link>
+      </div>
       
     </Container>
    

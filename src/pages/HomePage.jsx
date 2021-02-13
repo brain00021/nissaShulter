@@ -4,14 +4,16 @@ import HomePageFilter from 'components/Filter.jsx';
 import IndexAnimalList from 'components/IndexAnimalList.jsx';
 import IndexInformation from 'components/IndexInformation.jsx';
 import "assets/scss/index.scss";
+// import fontawesome from '@fortawesome/fontawesome'
+
 function HomePage(){
   return(
     <div>
       <Banner></Banner>
       <div className="indexBg" >
-      <HomePageFilter></HomePageFilter>
-      <IndexAnimalList/>
-      <IndexInformation/>
+        <HomePageFilter></HomePageFilter>
+        <IndexAnimalList/>
+        <IndexInformation/>
       </div>
      
     </div>

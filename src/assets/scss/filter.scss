@@ -60,7 +60,7 @@
     .filterButton {
       background: #d8a338;
       border: none;
-      padding: 8px 40px;
+      padding: 10px 40px;
       font-family: Noto Sans TC;
       font-style: normal;
       font-weight: bold;
@@ -75,4 +75,9 @@
     width: 1px;
     border-right: 1px solid #e0e0e0;
   }
+}
+.btnWrapper {
+  margin: auto;
+  margin-top: 80px;
+  max-width: 248px;
 }
