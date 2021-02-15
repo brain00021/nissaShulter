@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Link,
+  Switch,
+  Route,
+  useHistory,
+  useRouteMatch,
+  useParams,
+  NavLink,
+  Redirect,
+} from "react-router-dom";
 import AnimalCard from "../components/AnimalCard.jsx";
 import axios from "axios";
 
@@ -16,7 +27,7 @@ const AnimalList = () => {
   return animalList.map((animal) => {
     console.log(animal, "test");
     const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/" + animal.pic;
-    return <AnimalCard pic={amialPic} />;
+    return <Link to="/"><AnimalCard pic={amialPic} /></Link>;
   });
 };
 
