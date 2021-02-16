@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {Navbar,Nav,NavItem,Form,FormControl,Button,Dropdown,DropdownButton} from 'react-bootstrap';
+import {Navbar,Nav,NavItem,Form,FormControl,Button,Dropdown,DropdownButton,Image } from 'react-bootstrap';
 import "assets/scss/header.scss";
 import heartIcon  from 'assets/img/icon/love.svg'
+import LogoImg from 'assets/img/logo.png'
 import {
   BrowserRouter as Router,
   Link,
@@ -25,7 +26,9 @@ const Header =  () => {
   return(
     <div>
       <Navbar bg="light"  expand="lg">
-        <Navbar.Brand as={Link} to="/" >毛小孩不想流浪</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" >
+          <Image src={LogoImg} />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="ml-auto">
