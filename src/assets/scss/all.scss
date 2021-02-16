@@ -12,9 +12,25 @@ body {
   line-height: 29px;
   color: #ffffff;
   border-radius: 0.25em;
+  display: block;
+  text-align: center;
   &:hover,
   &:active {
     color: #fff;
     text-decoration: none;
   }
+}
+.defaultDetailBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 20px;
+  background: #e9e3d8;
+  border: 1px solid #9c7e61;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #9c7e61;
 }

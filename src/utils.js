@@ -28,9 +28,21 @@ const useStore = () => {
       console.log('animalDetail',e)
     }
   }
+  const shulterInfomation = async(unit) => {
+    try{
+      const config = {headers: {"Access-Control-Allow-Origin": "*"}};
+      const url =
+      `https://asms.coa.gov.tw/Asms/api/Shelter?UserTag=${unit}`;
+      const res = await axios.get(url,config);
+     return res;
+    }catch(e){
+      console.log('shulterInfomation',e)
+    }
+  }
   return {
     animalList,
-    animalDetail
+    animalDetail,
+    shulterInfomation
   }
 };
 

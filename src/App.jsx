@@ -43,7 +43,7 @@ function App() {
           <Login/>
         </Route>
         <Route path="/animalDetail/:animalAcceptNum/:anmialId">
-            <AnimalDetail/>
+          <AnimalDetail/>
         </Route>
         {/* <button onClick={() => changeLanguage("fr")}>de</button>
         <button onClick={() => changeLanguage("en")}>en</button> */}
