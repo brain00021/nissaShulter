@@ -19,6 +19,7 @@ import Header  from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
 import AnimalDetail from './pages/AnimalDetail.jsx';
+import Favorite from './pages/FavoritePage.jsx';
 
 import { useTranslation } from 'react-i18next';
 
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path="/dashboard">
           <Login/>
+        </Route>
+        <Route path="/favoriteAnimal">
+          <Favorite/>
         </Route>
         <Route path="/animalDetail/:animalAcceptNum/:anmialId">
           <AnimalDetail/>

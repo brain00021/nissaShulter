@@ -1,0 +1,11 @@
+.favoritePageBg {
+  min-height: calc(100vh - 150px);
+  .card {
+    @media screen and (max-width: 992px) {
+      margin: 10px 0;
+      .card-img-top {
+        min-height: 165px;
+      }
+    }
+  }
+}

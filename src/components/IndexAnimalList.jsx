@@ -53,7 +53,6 @@ const IndexAnimalList = () => {
   const handleFavor =  async() =>{
     console.log('handleAddFavor')
     const checkFavorite = await checkIsFav(fiterAnimalItem);
-    debugger;
     setFilterAnimalItem([...(checkFavorite.length>0 ?checkFavorite:fiterAnimalItem)]);
   }
   return (
@@ -62,12 +61,23 @@ const IndexAnimalList = () => {
       <h6>讓我們不只有十二夜，還要陪你度過千千萬萬個夜。</h6>
       {fiterAnimalItem.length > 0 &&  (<Swiper
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView={1}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
+        }}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          988: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
         }}
       >
       <div className="swiper-button-prev"></div>

@@ -1,4 +1,4 @@
-import { Button ,Card } from 'react-bootstrap';
+import { Button ,Card,Image } from 'react-bootstrap';
 // import axios from 'axios';
 import 'assets/scss/card.scss'
 // import pic2 from 'assets/img/banner/banner2.jpg';
@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import { useLocalStorage } from 'useLocalStorage';
+import isNoFav from 'assets/img/icon/isFav_heart_icon.png';
+import isFav from 'assets/img/icon/isFav_heart_full_icon.png';
 library.add(faMars,faVenus);
 const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/"
 const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , AnimalId,IsFav = false,handleFavor}) => {
@@ -52,7 +54,7 @@ const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , An
   
   return(
     <Card>
-      {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite">不是我的最愛</Button>) : (<Button onClick={addFavorite} className="isFavorite">我的最愛</Button>)}
+      {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite"><Image src={isFav}/></Button>) : (<Button onClick={addFavorite} className="isFavorite"><Image src={isNoFav}/></Button>)}
       
       
        <Link to={`/animalDetail/${AcceptNum}/${AnimalId}`}>

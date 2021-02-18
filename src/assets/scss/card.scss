@@ -13,7 +13,7 @@
     outline: none;
   }
   .imgWrapper {
-    max-height: 150px;
+    // max-height: 150px;
     overflow: hidden;
   }
   .card-title {
@@ -22,5 +22,30 @@
   }
   .card-text {
     text-align: center;
+  }
+}
+.isFavorite {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #fff;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 0;
+  justify-content: center;
+  img {
+    width: 36px;
+    height: 36px;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    background: #fff !important;
+    border: none !important;
   }
 }
