@@ -6,6 +6,11 @@
   .swiper-container {
     // padding-top: 30px;
     border-radius: 8px;
+    .swiper-slide {
+      img {
+        width: auto;
+      }
+    }
   }
 
   .detailWrapper {

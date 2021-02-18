@@ -36,7 +36,7 @@ function AnimalDetail(){
   console.log(detailData,'detailData')
   const animalPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/" + detailData.InImage
   // const animalPic = 'https://asms.coa.gov.tw/Amlapp/Upload/Pic/8903a339-f20f-47c4-b61a-058b7329710c_org.JPG';
-  const bannerGroup = [animalPic]
+  const bannerGroup = [{web:animalPic,mob:animalPic}]
   const animalDetailInfo = {
     CreateTime: '入所日期',
     AdoptionName:'開放認養',

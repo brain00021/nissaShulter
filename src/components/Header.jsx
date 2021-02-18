@@ -24,7 +24,7 @@ const Header =  () => {
     setLang(lng);
   };
   return(
-    <div>
+    <div className="header">
       <Navbar bg="light"  expand="lg">
         <Navbar.Brand as={Link} to="/" >
           <Image src={LogoImg} />

@@ -1,9 +1,17 @@
+#root {
+  margin-top: 65px;
+}
 .indexBg {
   background: url("../img/index_bg.jpg") repeat 0 -30px;
   background-size: 100%;
   // min-height: 1500px;
   box-sizing: border-box;
   padding-bottom: 50px;
+  padding-top: 50px;
+  .swiper-container {
+    // max-height: 500px;
+    background: #eee9df;
+  }
 }
 .IndexAnimalCard {
   margin: 20px auto;

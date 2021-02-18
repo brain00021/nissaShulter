@@ -24,7 +24,7 @@ const bannerSwiper = ({bannerGroup}) => {
     >
       <div className="swiper-button-prev"></div>
       {bannerGroup.map((item) =>{
-        return( <SwiperSlide><img src={item} /></SwiperSlide>)
+        return( <SwiperSlide><div className="web_view"><img src={item.web} /></div><div className="mob_view"><img src={item.mob} /></div></SwiperSlide>)
       })}
       
       {/* <SwiperSlide><img src={pic2} /></SwiperSlide> */}

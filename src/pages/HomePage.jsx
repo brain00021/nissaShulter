@@ -6,12 +6,14 @@ import IndexInformation from 'components/IndexInformation.jsx';
 import "assets/scss/index.scss";
 // import fontawesome from '@fortawesome/fontawesome'
 import pic from 'assets/img/banner/banner1.jpg';
+import picMob from 'assets/img/banner/banner1_mob.jpg';
+import picMob2 from 'assets/img/banner/banner2_mob.jpg';
 import pic2 from 'assets/img/banner/banner2.jpg';
-const bannerGroup = [pic,pic2]
+const bannerGroup = [{web:pic,mob:picMob},{web:pic2,mob:picMob2}]
 
 function HomePage(){
   return(
-    <div>
+    <div className="indexWrapper">
       <Banner bannerGroup={bannerGroup}></Banner>
       <div className="indexBg" >
         <HomePageFilter></HomePageFilter>

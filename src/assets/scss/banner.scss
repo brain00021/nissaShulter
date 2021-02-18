@@ -3,5 +3,22 @@
   background: #fff;
 }
 .swiper-slide {
+  // width: 100%;
   text-align: center;
+  img {
+    width: 100%;
+  }
+}
+
+.web_view {
+  display: block;
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.mob_view {
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
 }
