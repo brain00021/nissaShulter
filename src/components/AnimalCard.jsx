@@ -13,59 +13,60 @@ import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import { useLocalStorage } from 'useLocalStorage';
 library.add(faMars,faVenus);
 const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/"
-const AnimalCard = ({pic , message='相關資訊',title ,sex, acceptNum , animalId}) => {
+const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , AnimalId,IsFav = false,handleFavor}) => {
   // const [animalFavList, setAnimalFavList] = useLocalStorage('animalFavList');
   
   const addFavorite = ()=>{
     
     const favoriteAnimal = JSON.parse(localStorage.getItem('animalFavList')) || [];
-    const checkFavorite =  favoriteAnimal?.find(item => item?.animalId === animalId);
+    const checkFavorite =  favoriteAnimal?.find(item => item?.AnimalId === AnimalId);
     
     const Favorite = {
       pic,
-      message,
-      title,
-      sex,
-      acceptNum,
-      animalId,
-      Isfavorite: true
+      Message,
+      BreedName,
+      Sex,
+      AcceptNum,
+      AnimalId,
+      IsFav: true
     }
     
     // setAnimalFavList(favoriteAnimal)
     if(!checkFavorite){
       favoriteAnimal.push(Favorite)
       localStorage.setItem('animalFavList',JSON.stringify(favoriteAnimal))
-    }else{
-      // debugger
+      handleFavor();
     }
   }
   const cancelFavorite = ()=>{
     console.log('cancelFavorite')
     const favoriteAnimal = JSON.parse(localStorage.getItem('animalFavList')) || [];
-    const checkDeletFavorNum =  favoriteAnimal?.findIndex(item => item?.animalId === animalId);
+    const checkDeletFavorNum =  favoriteAnimal?.findIndex(item => item?.AnimalId === AnimalId);
     // debugger;
     if(checkDeletFavorNum !== -1){
       const filterFavoriteAnimal = [...favoriteAnimal.slice(0,checkDeletFavorNum),...favoriteAnimal.slice(checkDeletFavorNum+1)]
       localStorage.setItem('animalFavList',JSON.stringify(filterFavoriteAnimal))
+      handleFavor();
     }
   }
   
   return(
     <Card>
-      <Button onClick={addFavorite} className="isFavorite">我的最愛</Button>
-      <Button onClick={cancelFavorite} className="isFavorite">不是我的最愛</Button>
-       <Link to={`/animalDetail/${acceptNum}/${animalId}`}>
+      {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite">不是我的最愛</Button>) : (<Button onClick={addFavorite} className="isFavorite">我的最愛</Button>)}
+      
+      
+       <Link to={`/animalDetail/${AcceptNum}/${AnimalId}`}>
       <div className="imgWrapper">
       <Card.Img variant="top" src={amialPic+pic ||defaultImg} />
       </div>
       
       <Card.Body>
         <Card.Title>
-          <h5>{title}</h5>
-          <span>{sex === 1? (<FontAwesomeIcon icon={faMars} size="sm"/>) : (<FontAwesomeIcon icon={faVenus} size="sm"/>) }</span>
+          <h5>{BreedName}</h5>
+          <span>{Sex === 1? (<FontAwesomeIcon icon={faMars} size="sm"/>) : (<FontAwesomeIcon icon={faVenus} size="sm"/>) }</span>
         </Card.Title>
         <Card.Text>
-          {message}
+          {Message}
         </Card.Text>
         {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>

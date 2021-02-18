@@ -21,7 +21,7 @@ var DateDiff = function (sDate1, sDate2) { // sDate1 和 sDate2 是 2016-06-18 �
 };
 
 const IndexAnimalList = () => {
-  const { animalList } = useUtils();
+  const { animalList,checkIsFav } = useUtils();
   // const [animalFavList, setAnimalFavList] = useLocalStorage('animalFavList');
   const [fiterAnimalItem,setFilterAnimalItem] = useState([])
   useEffect(async()=>{
@@ -40,12 +40,22 @@ const IndexAnimalList = () => {
       // names must be equal
       return 0;
     });
+    const topListAnimal = filterData?.slice(0,20);
+    const checkFavorite = await checkIsFav(topListAnimal);
+    // debugger;
+
     // const setCopyData = filterData.reduce((acc,cur) => {
     //   cur['TotalStay'] =  DateDiff(cur.CreateTime.slice(0,10))
     //   return acc.concat(cur);
     // },[])
-    setFilterAnimalItem([...filterData?.slice(0,20)]);
+    setFilterAnimalItem([...(checkFavorite.length>0 ?checkFavorite:topListAnimal)]);
   },[])
+  const handleFavor =  async() =>{
+    console.log('handleAddFavor')
+    const checkFavorite = await checkIsFav(fiterAnimalItem);
+    debugger;
+    setFilterAnimalItem([...(checkFavorite.length>0 ?checkFavorite:fiterAnimalItem)]);
+  }
   return (
     <Container className="IndexAnimalCard">
       <h2>待認養的毛小孩 </h2>
@@ -63,7 +73,7 @@ const IndexAnimalList = () => {
       <div className="swiper-button-prev"></div>
       {fiterAnimalItem.map((item,index)=>{
           return(
-            <SwiperSlide key={index}><AnimalCard acceptNum={item.AcceptNum} animalId={item.AnimalId} title={item?.BreedName} pic={item.pic} sex={item?.Sex} message={`入園天數${item?.TotalStay}`}></AnimalCard></SwiperSlide>
+            <SwiperSlide key={index}><AnimalCard AcceptNum={item.AcceptNum} AnimalId={item.AnimalId} BreedName={item?.BreedName} pic={item.pic} Sex={item?.Sex} Message={`入園天數${item?.TotalStay}`}  IsFav={item?.IsFav} handleFavor={handleFavor}></AnimalCard></SwiperSlide>
           )
         })}
       <div className="swiper-button-next"></div>
