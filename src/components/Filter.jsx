@@ -7,33 +7,54 @@ import useUtils from "../utils.js";
 const Filter = () => {
   const {animalAllShelter} =useUtils();
   const [filterData,setFilterData] = useState({});
+  const [filterOriginData,setFilterOriginData] = useState([]);
   useEffect( async() =>{
     const {data} = await animalAllShelter();
-    const filterCounty = data.reduce((acc,item) => {
+    setFilterOriginData([...data])
+    let filterCounty = data.reduce((acc,item) => {
       const curCountry = item?.STANAME.slice(0,3);
-      if(!acc.some(county => county === curCountry)){
-        acc.push(curCountry); 
+      if(!acc.some(county => county.label === curCountry)){
+        acc.push({label:curCountry}); 
       }
       
       return acc
     },[])
+    filterCounty.unshift({label:'全部'})
     const filterShelterData =  data.reduce((acc,item) => {
-      const {STANAME,UserTag,UserType} = item;
+      const {STANAME,UserTag,UserType,ShelterName} = item;
       if(!acc.some(county => county.STANAME === STANAME)){
-        acc.push({STANAME,UserTag,UserType}); 
+        acc.push({STANAME,UserTag,UserType,ShelterName}); 
       }
       
       return acc
     },[])
+    const animalType = [{label:'狗',AnimalType:1},{label:'貓',AnimalType:2},{label:'其他',AnimalType:3}]
     setFilterData({
       countrys:filterCounty,
-      shulter:filterShelterData
+      shulter:filterShelterData,
+      animalSelect:animalType
     })
     
 
   },[])
   const onChange = (e) => {
-    console.log(e.target.value,'settingValue')
+    const {id,value} = e.target;
+    console.log(value, id,'settingValue')
+    if(id ==='countrys'){
+      const results = filterOriginData?.filter((item)=>{
+        if(value === '全部'){
+          return item.STANAME
+        }else{
+          return item.STANAME.slice(0,3) === value
+        }
+       
+      })
+      console.log(results);
+      setFilterData({
+        ...filterData,
+        shulter:results,
+      })
+    }
 
   }
   console.log(filterData,'filterData')
@@ -45,27 +66,22 @@ const Filter = () => {
       <div className="filterSection">
 
       <Form>
-        <Form.Group controlId="exampleForm.SelectCustom">
-          <Form.Label>Custom select</Form.Label>
-          <Form.Control as="select" onChange={onChange} custom>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
-        </Form.Group>
-      </Form>
-      <Form>
-        <Form.Group controlId="exampleForm.SelectCustom">
-          <Form.Label>Custom select</Form.Label>
-          <Form.Control as="select" onChange={onChange} custom>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-          </Form.Control>
+        <Form.Group>
+          {/* <Form.Label>Custom select</Form.Label> */}
+          {Object.entries(filterData).map((item,index) =>{
+            const [key,value] = item;
+            return(
+              <Form.Control key={index} as="select" onChange={onChange} id={key}  custom>
+                {value.map((item,Cindex)=>{
+                  const checkFilterShelterData = item.hasOwnProperty('STANAME');
+                  return(
+                    <option key={Cindex} value={checkFilterShelterData? item.UserTag : item.value}> {checkFilterShelterData ? item.ShelterName : item.label}</option>
+                  )
+                })}
+              </Form.Control>
+            )
+          })}
+
         </Form.Group>
       </Form>
       
