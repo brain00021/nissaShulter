@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
-import { useLocalStorage } from 'useLocalStorage';
-import axios from "axios"
+// import { useLocalStorage } from 'useLocalStorage';
+// import axios from "axios"
 import {
   BrowserRouter as Router,
   Link,

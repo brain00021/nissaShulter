@@ -16,7 +16,7 @@ const useStore = () => {
   const animalList = async () => {
     try {
       const url =
-        "https://asms.coa.gov.tw/Asms/api/ViewNowAnimal?pageSize=500&currentPage=1&sortFields=AcceptDate";
+        "https://asms.coa.gov.tw/Asms/api/ViewNowAnimal?pageSize=200&currentPage=1&sortFields=CreateTime";
       const config = { headers: { "Access-Control-Allow-Origin": "*" } };
       const res = await axios.get(url, config);
       const copyData = JSON.parse(JSON.stringify(res.data));
@@ -28,6 +28,37 @@ const useStore = () => {
       return copyDataCustom;
     } catch (e) {
       console.log("animalList", e);
+    }
+  };
+  const animalAllShelter = async () => {
+    try {
+      const url = "https://asms.coa.gov.tw/Asms/api/Shelter?UserType=G";
+      const config = { headers: { "Access-Control-Allow-Origin": "*" } };
+      const res = await axios.get(url, config);
+      return res;
+    } catch (e) {
+      console.log("animalList", e);
+    }
+  };
+  const getAnimalTotal = async () => {
+    try {
+      const url =
+        "https://cors-anywhere.herokuapp.com/https://asms.coa.gov.tw/amlapp/Handler_ENRF/App/getAnimalCount.ashx";
+      const headers = {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      let forData = new FormData();
+      forData.append(
+        "Data",
+        '{"TableName":"Adopt","Breed":"","ChipID":"","AcceptNum":"","Unit":""}'
+      );
+      const res = await axios.post(url, forData, headers);
+      return res;
+    } catch (e) {
+      console.log("totalError", e);
     }
   };
   const animalDetail = async (acceptNum, id) => {
@@ -81,6 +112,8 @@ const useStore = () => {
     animalDetail,
     shulterInfomation,
     checkIsFav,
+    getAnimalTotal,
+    animalAllShelter,
   };
 };
 

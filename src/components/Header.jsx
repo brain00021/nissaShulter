@@ -33,8 +33,8 @@ const Header =  () => {
         <Navbar.Collapse>
           <Nav className="ml-auto">
 
-            <Nav.Link as={Link} to="/" activeClassName="active">領養須知</Nav.Link>
-            <Nav.Link as={Link} to="/about" activeClassName="active" >領養浪浪</Nav.Link>
+            <Nav.Link as={Link} to="/" activeclassname="active">領養須知</Nav.Link>
+            <Nav.Link as={Link} to="/about" activeclassname="active" >領養浪浪</Nav.Link>
           
             <DropdownButton id="dropdown-basic-button" title={lang}>
               <Dropdown.Menu>
@@ -42,9 +42,9 @@ const Header =  () => {
                 <Dropdown.Item onClick={() => changeLanguage("en")}>EN</Dropdown.Item>
               </Dropdown.Menu>
             </DropdownButton>
-              <Nav.Link as={Link} to="/favoriteAnimal" activeClassName="active" className="favoriteIcon" ></Nav.Link>
-              <Nav.Link as={Link} to="/login"  activeClassName="active">登入</Nav.Link>
-              <Nav.Link as={Link} to="/signUp"  activeClassName="active">註冊</Nav.Link>
+              <Nav.Link as={Link} to="/favoriteAnimal" activeclassname="active" className="favoriteIcon" ></Nav.Link>
+              <Nav.Link as={Link} to="/login"  activeclassname="active">登入</Nav.Link>
+              <Nav.Link as={Link} to="/signUp"  activeclassname="active">註冊</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

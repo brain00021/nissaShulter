@@ -14,7 +14,7 @@ const bannerSwiper = ({bannerGroup}) => {
     <Swiper
       spaceBetween={0}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
+      onSlideChange={() => {}}
       onSwiper={(swiper) => console.log(swiper)}
       autoplay={{ delay: 3000 }}
       navigation={{
@@ -23,8 +23,8 @@ const bannerSwiper = ({bannerGroup}) => {
       }}
     >
       <div className="swiper-button-prev"></div>
-      {bannerGroup.map((item) =>{
-        return( <SwiperSlide><div className="web_view"><img src={item.web} /></div><div className="mob_view"><img src={item.mob} /></div></SwiperSlide>)
+      {bannerGroup.map((item,Cindex) =>{
+        return( <SwiperSlide key={Cindex}><div className="web_view"><img src={item.web} /></div><div className="mob_view"><img src={item.mob} /></div></SwiperSlide>)
       })}
       
       {/* <SwiperSlide><img src={pic2} /></SwiperSlide> */}

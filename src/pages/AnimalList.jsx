@@ -13,22 +13,17 @@ import {
 } from "react-router-dom";
 import AnimalCard from "../components/AnimalCard.jsx";
 import axios from "axios";
+import useUtils from "../utils.js";
 
 const AnimalList = () => {
   const [animalList, setAnimalList] = useState([]);
+  const {getAnimalTotal} = useUtils();
   useEffect(() => {
-    console.log("hi");
-    const url =
-      "https://asms.coa.gov.tw/Asms/api/ViewAnimal?pageSize=200&currentPage=1&sortDirection=DESC&sortFields=AcceptDate";
-    axios.get(url).then(({ data }) => {
-      setAnimalList([...data]);
-    });
+    getAnimalTotal();
   }, []);
-  return animalList.map((animal) => {
-    console.log(animal, "test");
-    const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/" + animal.pic;
-    return <Link to="/"><AnimalCard pic={amialPic} /></Link>;
-  });
+  return (
+    <></>
+  )
 };
 
 export default AnimalList;
