@@ -103,7 +103,7 @@ const IndexAnimalList = () => {
         <AnimalCard></AnimalCard>
         </Col> */}
       <div className="btnWrapper">
-        <Link to="/about" className="defaultBtn">尋找更多的狗狗</Link>
+        <Link to="/animalList" className="defaultBtn">尋找更多的狗狗</Link>
       </div>
       
     </Container>

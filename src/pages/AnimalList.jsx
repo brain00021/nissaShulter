@@ -27,7 +27,7 @@ const AnimalList = () => {
     const Typeid =  urlParams.get('animalSelect') ? `Typeid=${urlParams.get('animalSelect')  }`: '';
     let filterUrl = ''
     if(UserTag || Typeid){
-      filterUrl = `?${UserTag + Typeid}&pageSize=200&currentPage=1`
+      filterUrl = `?${(Typeid? UserTag+'&' :UserTag) + Typeid}&pageSize=200&currentPage=1`
     }else{
       filterUrl = `?pageSize=200&currentPage=1`
     }
