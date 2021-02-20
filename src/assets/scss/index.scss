@@ -8,7 +8,8 @@
   min-height: calc(100vh - 150px);
   box-sizing: border-box;
   padding-bottom: 50px;
-  padding-top: 50px;
+  // padding-top: 50px;
+  overflow: hidden;
   .swiper-container {
     // max-height: 500px;
     background: #eee9df;

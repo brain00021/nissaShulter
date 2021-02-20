@@ -12,7 +12,9 @@
   // margin: 30px auto;
   /* Achromatic/dark grey */
   color: #444544;
-
+  @media screen and (max-width: 768px) {
+    padding: 0 10px;
+  }
   .filterSection {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -26,15 +28,23 @@
     margin-top: 42px;
     padding: 0 10px;
     justify-content: space-between;
-
+    box-sizing: border-box;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      min-width: 50px;
+      width: auto;
+      padding: 10px;
+    }
     .form-group {
       display: flex;
       align-items: center;
       min-width: 20%;
       margin: 0;
+
       padding-right: 10px;
       min-width: 500px;
       justify-content: space-between;
+
       .form-control {
         position: relative;
         display: flex;
@@ -54,6 +64,18 @@
         }
         &.animalSelect {
           border: none;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        padding: 10px;
+        flex-direction: column;
+        min-width: 200px;
+        .form-control {
+          border: 1px solid #e0e0e0;
+          margin-bottom: 10px;
+          &.animalSelect {
+            border: 1px solid #e0e0e0;
+          }
         }
       }
     }
@@ -83,4 +105,53 @@
   margin: auto;
   margin-top: 80px;
   max-width: 248px;
+}
+
+.titleWrapper {
+  margin-top: 50px;
+}
+
+// animalFilterSetting
+
+.animalFilterWrapper {
+  #filterWrapper {
+    .filterSection {
+      margin: 0 auto;
+      width: 100%;
+      background: #9c7e61;
+      border-radius: 0;
+      min-height: 50px;
+    }
+    .form-control {
+      background: #9c7e61;
+      color: #fff;
+      border-right: 0px;
+      &.countrys {
+        border-right: 0;
+        @media screen and (max-width: 768px) {
+          border-right: 1px solid #fff;
+        }
+      }
+      &.animalSelect {
+        order: -1;
+      }
+      &.shelter {
+        background: #fff;
+        color: #9c7e61;
+        padding: 0 10px;
+        border-radius: 38px;
+        min-width: fit-content;
+        @media screen and (max-width: 768px) {
+          padding: 10px;
+        }
+      }
+    }
+    .filterButton {
+      padding: 0 20px;
+      color: #9c7e61;
+      border: 1px solid #9c7e61;
+      background: #fff;
+      font-size: 15px;
+    }
+  }
 }

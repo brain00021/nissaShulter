@@ -34,3 +34,21 @@ body {
   font-size: 20px;
   color: #9c7e61;
 }
+
+// aminalList
+.tips {
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 10px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.warmingWrapper {
+  background: #e9e3d8;
+  box-shadow: 0 0 5px rgba(#000, 0.2);
+  padding: 10px 0;
+}

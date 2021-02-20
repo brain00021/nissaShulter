@@ -8,7 +8,7 @@ import {
   useHistory
 } from "react-router-dom";
 import useUtils from "../utils.js";
-const Filter = () => {
+const Filter = ({indexStatus = true,onFilter}) => {
   const history = useHistory();
   const {animalAllShelter} =useUtils();
   const [filterData,setFilterData] = useState({});
@@ -27,7 +27,7 @@ const Filter = () => {
       
       return acc
     },[])
-    filterCounty.unshift({label:'全部',value:'all'})
+    filterCounty.unshift({label:'全部縣市',value:'all'})
     let filterShelterData =  data.reduce((acc,item) => {
       const {STANAME,UserTag,UserType,ShelterName} = item;
       if(!acc.some(county => county.STANAME === STANAME)){
@@ -37,7 +37,7 @@ const Filter = () => {
       return acc
     },[])
     filterShelterData.unshift({STANAME:'全部',ShelterName:'全省收容所',UserTag:'all'})
-    const animalType = [{label:'全部',value:'all'},{label:'狗',value:1},{label:'貓',value:2},{label:'其他',value:3}]
+    const animalType = [{label:'全部動物',value:'all'},{label:'狗',value:1},{label:'貓',value:2},{label:'其他',value:3}]
     setFilterData({
       countrys:filterCounty,
       shelter:filterShelterData,
@@ -96,14 +96,20 @@ const Filter = () => {
     },'')
     console.log(urlParams)
     history.push(`/animalList${urlParams===''? '' : '?'+urlParams }`)
+    onFilter && onFilter();
 
   }
   console.log(filterData,'filterData')
 
   return (
-    <Container id="filterWrapper" >
-      <h2>尋找我的毛小孩 </h2>
-      <h6>找尋距離近的收容所，快速搜尋附近的毛小孩</h6>
+    <div id="filterWrapper" >
+      {indexStatus && (
+        <div className="titleWrapper">
+          <h2>尋找我的毛小孩 </h2>
+          <h6>找尋距離近的收容所，快速搜尋附近的毛小孩</h6>
+        </div>
+      )}
+
       <div className="filterSection">
 
       <Form>
@@ -116,7 +122,9 @@ const Filter = () => {
                 {value.map((item,Cindex)=>{
                   const checkFilterShelterData = item.hasOwnProperty('STANAME');
                   return(
-                    <option key={Cindex} value={checkFilterShelterData? item.UserTag : item.value}> {checkFilterShelterData ? item.ShelterName : item.label}</option>
+                    <option key={Cindex} value={checkFilterShelterData? item.UserTag : item.value}> 
+                    {checkFilterShelterData ? item.ShelterName : item.label}
+                    </option>
                   )
                 })}
               </Form.Control>
@@ -125,11 +133,9 @@ const Filter = () => {
 
         </Form.Group>
       </Form>
-      
-        {/* <span className="filterBorder"></span> */}
         <Button onClick={filterCheck}  className="filterButton"> 開始搜尋 </Button>
       </div>
-    </Container>
+    </div>
   )
 }
 export default Filter;
