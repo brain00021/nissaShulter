@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 .animalDetailWrapper {
-  background: url(../img/animalDetail_bg.jpg) no-repeat center top;
+  background: url(../img/animalDetail_bg.jpg) no-repeat center bottom;
   background-size: 100%;
-  min-height: 1000px;
-  padding-top: 20px;
+  min-height: calc(100vh - 150px);
+  overflow: hidden;
+  padding: 60px 0;
   .swiper-container {
     // padding-top: 30px;
     border-radius: 8px;
@@ -20,6 +22,11 @@
     background: #fff;
     border-radius: 8px;
     padding: 30px;
+    .memo {
+      p {
+        margin: 0;
+      }
+    }
     .detail {
       padding-top: 30px;
     }
@@ -69,4 +76,9 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  &.favorIcon {
+  }
+  .favoriteIcon {
+    background-size: 100%;
+  }
 }

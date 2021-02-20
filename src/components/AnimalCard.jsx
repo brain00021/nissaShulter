@@ -12,7 +12,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import { useLocalStorage } from 'useLocalStorage';
 import isNoFav from 'assets/img/icon/isFav_heart_icon.png';
-import isFav from 'assets/img/icon/isFav_heart_full_icon.png';
+import isFavIcon from 'assets/img/icon/isFav_heart_full_icon.png';
 library.add(faMars,faVenus);
 const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/"
 const AnimalCard = ({pic ,Name='', Message='相關資訊',BreedName ,Sex, AcceptNum , AnimalId,IsFav = false,handleFavor}) => {
@@ -55,7 +55,7 @@ const AnimalCard = ({pic ,Name='', Message='相關資訊',BreedName ,Sex, Accept
   
   return(
     <Card>
-      {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite"><Image src={isFav}/></Button>) : (<Button onClick={addFavorite} className="isFavorite"><Image src={isNoFav}/></Button>)}
+      {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite"><Image src={isFavIcon}/></Button>) : (<Button onClick={addFavorite} className="isFavorite"><Image src={isNoFav}/></Button>)}
       
       
        <Link to={`/animalDetail/${AcceptNum}/${AnimalId}`}>

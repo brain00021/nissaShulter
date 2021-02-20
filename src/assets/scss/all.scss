@@ -21,20 +21,6 @@ body {
     text-decoration: none;
   }
 }
-.defaultDetailBtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 7px 20px;
-  background: #e9e3d8;
-  border: 1px solid #9c7e61;
-  box-sizing: border-box;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 20px;
-  color: #9c7e61;
-}
 
 // aminalList
 .tips {
@@ -52,4 +38,37 @@ body {
   background: #e9e3d8;
   box-shadow: 0 0 5px rgba(#000, 0.2);
   padding: 10px 0;
+}
+.defaultDetailBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 20px;
+  background: #e9e3d8;
+  border: 1px solid #9c7e61;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #9c7e61;
+  flex: 1;
+  &:nth-child(2) {
+    margin: 0 10px;
+  }
+  // margin: 0 10px;
+  &.favorIcon {
+    flex: 2;
+    margin-left: 0;
+    &:hover,
+    &:active,
+    &:focus {
+      background: #dad4ca !important;
+      border: 1px solid #9c7e61 !important;
+      outline: 0;
+    }
+    @media screen and (max-width: 768px) {
+      flex: 1;
+    }
+  }
 }

@@ -23,6 +23,7 @@ function FavoritePage(){
   return(
     <div className="indexBg favoritePageBg">
     <Container >
+      <h2>目前考慮中的毛小孩</h2>
       <Row>
       {favoriteList.map((item,index)=>{
           return(<Col sm={6} md={4} lg={3} key={index} ><AnimalCard Name={item.Name} AcceptNum={item.AcceptNum} AnimalId={item.AnimalId} BreedName={item?.BreedName} pic={item.pic} Sex={item?.Sex}  Message={item?.Message}  IsFav={item?.IsFav} handleFavor={handleFavor}></AnimalCard></Col>)

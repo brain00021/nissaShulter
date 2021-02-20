@@ -20,6 +20,7 @@ import Footer from './components/Footer.jsx';
 import Login from './pages/Login.jsx';
 import AnimalDetail from './pages/AnimalDetail.jsx';
 import Favorite from './pages/FavoritePage.jsx';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import { useTranslation } from 'react-i18next';
 
@@ -55,6 +56,13 @@ function App() {
         {/* <button onClick={() => changeLanguage("fr")}>de</button>
         <button onClick={() => changeLanguage("en")}>en</button> */}
       </Switch>
+      <MessengerCustomerChat
+        pageId="111895200941097"
+        appId=""
+        loggedInGreeting='歡迎您到浪浪不在流浪之家，有任何疑問歡迎在線上提問~~'
+        loggedOutGreeting='歡迎您到浪浪不在流浪之家，有任何疑問歡迎在線上提問~~'
+        attribution="setup_tool"
+      />
       <Footer/>
     </Router>
   );
