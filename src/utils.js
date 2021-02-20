@@ -16,7 +16,7 @@ const useStore = () => {
   const animalList = async () => {
     try {
       const url =
-        "https://asms.coa.gov.tw/Asms/api/ViewNowAnimal?pageSize=200&currentPage=1&sortFields=CreateTime";
+        "https://asms.coa.gov.tw/Asms/api/ViewNowAnimal?sortFields=CreateTime";
       const config = { headers: { "Access-Control-Allow-Origin": "*" } };
       const res = await axios.get(url, config);
       const copyData = JSON.parse(JSON.stringify(res.data));
@@ -30,6 +30,23 @@ const useStore = () => {
       console.log("animalList", e);
     }
   };
+
+  const animalFilterList = async (filterUrl) => {
+    try {
+      const url = `https://asms.coa.gov.tw/Asms/api/ViewNowAnimal${filterUrl}`;
+      const config = { headers: { "Access-Control-Allow-Origin": "*" } };
+      const res = await axios.get(url, config);
+      const copyData = JSON.parse(JSON.stringify(res.data));
+      const copyDataCustom = copyData.reduce((acc, cur) => {
+        cur["IsFav"] = false;
+        cur["TotalStay"] = DateDiff(cur.CreateTime.slice(0, 10));
+        return acc.concat(cur);
+      }, []);
+      return copyDataCustom;
+    } catch (e) {
+      console.log("animalFilterList", e);
+    }
+  };
   const animalAllShelter = async () => {
     try {
       const url = "https://asms.coa.gov.tw/Asms/api/Shelter?UserType=G";
@@ -41,13 +58,15 @@ const useStore = () => {
     }
   };
   const getAnimalTotal = async () => {
+    // 要先打開 https://cors-anywhere.herokuapp.com 的伺服器才能執行這段
     try {
       const url =
         "https://cors-anywhere.herokuapp.com/https://asms.coa.gov.tw/amlapp/Handler_ENRF/App/getAnimalCount.ashx";
       const headers = {
-        headers: {
+        data: {
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
+          "Sec-Fetch-Site": "same-origin",
         },
       };
       let forData = new FormData();
@@ -114,6 +133,7 @@ const useStore = () => {
     checkIsFav,
     getAnimalTotal,
     animalAllShelter,
+    animalFilterList,
   };
 };
 

@@ -34,7 +34,7 @@ const Header =  () => {
           <Nav className="ml-auto">
 
             <Nav.Link as={Link} to="/" activeclassname="active">領養須知</Nav.Link>
-            <Nav.Link as={Link} to="/about" activeclassname="active" >領養浪浪</Nav.Link>
+            <Nav.Link as={Link} to="/animalList" activeclassname="active" >領養浪浪</Nav.Link>
           
             <DropdownButton id="dropdown-basic-button" title={lang}>
               <Dropdown.Menu>

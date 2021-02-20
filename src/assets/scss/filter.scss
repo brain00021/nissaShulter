@@ -20,37 +20,40 @@
     min-height: 82px;
     display: flex;
     align-items: center;
-    max-width: 872px;
+    width: fit-content;
+    min-width: 700px;
     margin: 0 auto;
     margin-top: 42px;
-    justify-content: space-around;
-    .dropdown {
+    padding: 0 10px;
+    justify-content: space-between;
+
+    .form-group {
       display: flex;
       align-items: center;
       min-width: 20%;
-      .dropdown-toggle {
+      margin: 0;
+      padding-right: 10px;
+      min-width: 500px;
+      justify-content: space-between;
+      .form-control {
+        position: relative;
         display: flex;
         align-items: center;
-        padding: 10px;
-
-        &::after {
-          position: absolute;
-          right: 10px;
-          top: 0;
-          bottom: 0;
-          margin: auto;
+        border: none;
+        border-right: 1px solid #e0e0e0;
+        border-radius: 0;
+        outline: none;
+        flex: 1;
+        min-width: 100px;
+        padding-right: 10px;
+        select {
+          display: none; /*hide original SELECT element: */
         }
-        &.btn-primary:hover,
-        &.btn-primary:focus,
-        &.btn-primary:active {
-          background: transparent;
-          /* Primary/yellow */
-          color: #444544;
-          border-color: none;
-          &::after {
-            background: url(../img/icon/arrow-down.png) no-repeat center center;
-            transform: rotate(-180deg);
-          }
+        &.shulter {
+          flex-basis: 200px;
+        }
+        &.animalSelect {
+          border: none;
         }
       }
     }

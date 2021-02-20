@@ -25,7 +25,7 @@ function FavoritePage(){
     <Container >
       <Row>
       {favoriteList.map((item,index)=>{
-          return(<Col sm={true} md={4} key={index} ><AnimalCard AcceptNum={item.AcceptNum} AnimalId={item.AnimalId} BreedName={item?.BreedName} pic={item.pic} Sex={item?.Sex} Message={item?.Message}  IsFav={item?.IsFav} handleFavor={handleFavor}></AnimalCard></Col>)
+          return(<Col sm={6} md={4} lg={3} key={index} ><AnimalCard Name={item.Name} AcceptNum={item.AcceptNum} AnimalId={item.AnimalId} BreedName={item?.BreedName} pic={item.pic} Sex={item?.Sex}  Message={item?.Message}  IsFav={item?.IsFav} handleFavor={handleFavor}></AnimalCard></Col>)
  
         })}
       </Row>

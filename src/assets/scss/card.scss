@@ -1,20 +1,30 @@
 .card {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: none;
+  border-radius: 5px;
+  overflow: hidden;
   color: #444544;
   text-decoration: none;
+  margin: 10px 0;
+
   a {
     color: #444544;
     text-decoration: none;
   }
   .card-img-top {
     background: #e0e0e0;
+    min-width: 100%;
+    // min-height: 200px;
     border: none;
     outline: none;
   }
   .imgWrapper {
-    // max-height: 150px;
+    min-height: 160px;
+    max-height: 160px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: #e0e0e0;
   }
   .card-title {
     display: flex;

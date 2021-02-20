@@ -2,25 +2,33 @@ import React, { useState, useEffect } from "react";
 import axios from "axios"
 import {Container,Form,Button} from 'react-bootstrap';
 import 'assets/scss/filter.scss'
-
+import {
+  BrowserRouter as Router,
+  Link,
+  useHistory
+} from "react-router-dom";
 import useUtils from "../utils.js";
 const Filter = () => {
+  const history = useHistory();
   const {animalAllShelter} =useUtils();
   const [filterData,setFilterData] = useState({});
   const [filterOriginData,setFilterOriginData] = useState([]);
+  const [fitlerLink,setFilterLink] = useState({
+
+  });
   useEffect( async() =>{
     const {data} = await animalAllShelter();
     setFilterOriginData([...data])
     let filterCounty = data.reduce((acc,item) => {
       const curCountry = item?.STANAME.slice(0,3);
       if(!acc.some(county => county.label === curCountry)){
-        acc.push({label:curCountry}); 
+        acc.push({label:curCountry,value:curCountry}); 
       }
       
       return acc
     },[])
-    filterCounty.unshift({label:'全部'})
-    const filterShelterData =  data.reduce((acc,item) => {
+    filterCounty.unshift({label:'全部',value:'all'})
+    let filterShelterData =  data.reduce((acc,item) => {
       const {STANAME,UserTag,UserType,ShelterName} = item;
       if(!acc.some(county => county.STANAME === STANAME)){
         acc.push({STANAME,UserTag,UserType,ShelterName}); 
@@ -28,10 +36,11 @@ const Filter = () => {
       
       return acc
     },[])
-    const animalType = [{label:'狗',AnimalType:1},{label:'貓',AnimalType:2},{label:'其他',AnimalType:3}]
+    filterShelterData.unshift({STANAME:'全部',ShelterName:'全省收容所',UserTag:'all'})
+    const animalType = [{label:'全部',value:'all'},{label:'狗',value:1},{label:'貓',value:2},{label:'其他',value:3}]
     setFilterData({
       countrys:filterCounty,
-      shulter:filterShelterData,
+      shelter:filterShelterData,
       animalSelect:animalType
     })
     
@@ -41,20 +50,52 @@ const Filter = () => {
     const {id,value} = e.target;
     console.log(value, id,'settingValue')
     if(id ==='countrys'){
-      const results = filterOriginData?.filter((item)=>{
-        if(value === '全部'){
-          return item.STANAME
-        }else{
+      let results = []
+      if(value === 'all'){
+        results = [...filterOriginData]
+        results.unshift({STANAME:'全部',ShelterName:'全省收容所',UserTag:'all'})
+      }else{
+        results = filterOriginData?.filter((item)=>{
           return item.STANAME.slice(0,3) === value
-        }
-       
-      })
-      console.log(results);
-      setFilterData({
-        ...filterData,
-        shulter:results,
       })
     }
+      console.log(results);
+      
+        setFilterData({
+          ...filterData,
+          shelter:results,
+        })
+
+
+    }
+    if(value !== 'all'){
+    setFilterLink({
+      ...fitlerLink,
+      [id]:value,
+    })
+  }
+    console.log(fitlerLink,'fitlerLink')
+
+  }
+  const filterCheck = () =>{
+    const checkShelterKey = Object.keys(fitlerLink).some((item)=> item === 'shelter');
+    
+    const urlParams = Object.entries(fitlerLink).reduce((acc,cur,index)=>{
+      const [key,value] = cur;
+      if(key ==='countrys' && !checkShelterKey){
+        const findFirstShelter = filterData.shelter.find((item) => (item.STANAME.slice(0,3) === value))
+        return acc = acc + `shelter=${findFirstShelter?.UserTag}`
+      }else{
+        if(index === Object.entries(fitlerLink).length-1 ){
+          return acc = acc + `${key}=${value}`
+        }
+        else{
+          return acc = acc + `${key}=${value}&`
+        }
+      }
+    },'')
+    console.log(urlParams)
+    history.push(`/animalList${urlParams===''? '' : '?'+urlParams }`)
 
   }
   console.log(filterData,'filterData')
@@ -71,7 +112,7 @@ const Filter = () => {
           {Object.entries(filterData).map((item,index) =>{
             const [key,value] = item;
             return(
-              <Form.Control key={index} as="select" onChange={onChange} id={key}  custom>
+              <Form.Control key={index} as="select" onChange={onChange} id={key} className={key}>
                 {value.map((item,Cindex)=>{
                   const checkFilterShelterData = item.hasOwnProperty('STANAME');
                   return(
@@ -85,8 +126,8 @@ const Filter = () => {
         </Form.Group>
       </Form>
       
-        <span className="filterBorder"></span>
-        <Button className="filterButton"> 開始搜尋 </Button>
+        {/* <span className="filterBorder"></span> */}
+        <Button onClick={filterCheck}  className="filterButton"> 開始搜尋 </Button>
       </div>
     </Container>
   )

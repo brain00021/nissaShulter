@@ -15,7 +15,7 @@ import isNoFav from 'assets/img/icon/isFav_heart_icon.png';
 import isFav from 'assets/img/icon/isFav_heart_full_icon.png';
 library.add(faMars,faVenus);
 const amialPic = "https://asms.coa.gov.tw/Amlapp/Upload/Pic/"
-const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , AnimalId,IsFav = false,handleFavor}) => {
+const AnimalCard = ({pic ,Name='', Message='相關資訊',BreedName ,Sex, AcceptNum , AnimalId,IsFav = false,handleFavor}) => {
   // const [animalFavList, setAnimalFavList] = useLocalStorage('animalFavList');
   
   const addFavorite = ()=>{
@@ -30,6 +30,7 @@ const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , An
       Sex,
       AcceptNum,
       AnimalId,
+      Name,
       IsFav: true
     }
     
@@ -64,7 +65,7 @@ const AnimalCard = ({pic , Message='相關資訊',BreedName ,Sex, AcceptNum , An
       
       <Card.Body>
         <Card.Title>
-          <h5>{BreedName}</h5>
+          <h5>{Name || BreedName}</h5>
           <span>{Sex === 1? (<FontAwesomeIcon icon={faMars} size="sm"/>) : (<FontAwesomeIcon icon={faVenus} size="sm"/>) }</span>
         </Card.Title>
         <Card.Text>

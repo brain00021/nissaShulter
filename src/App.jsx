@@ -49,6 +49,9 @@ function App() {
         <Route path="/animalDetail/:animalAcceptNum/:anmialId">
           <AnimalDetail/>
         </Route>
+        <Route path="/animalList">
+        <AnimalList/>
+        </Route>
         {/* <button onClick={() => changeLanguage("fr")}>de</button>
         <button onClick={() => changeLanguage("en")}>en</button> */}
       </Switch>
