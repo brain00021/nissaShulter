@@ -47,6 +47,7 @@ const AnimalList = () => {
   const [animalList, setAnimalList] = useState([]);
   const {getAnimalTotal,animalFilterList,checkIsFav} = useUtils();
   const [filterCheck,setFilterCheck] = useState(0);
+  
   const handleFilter = async() =>{
     console.log('check')
     setFilterCheck(filterCheck +1)
@@ -54,13 +55,14 @@ const AnimalList = () => {
   useEffect(async() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+    
+
     // get parse
     //?Typeid=1&UserTag=LAAAG&pageSize=200&currentPage=1&sortDirection=DESC&sortFields=AcceptDate
     const UserTag = urlParams.get('shelter') ? `UserTag=${urlParams.get('shelter')} `: '';
     const Typeid =  urlParams.get('animalSelect') ? `Typeid=${urlParams.get('animalSelect')}`: '';
     let filterUrl = ''
     if(UserTag || Typeid){
-      debugger;
       filterUrl = `?${((Typeid !== '' &&UserTag !=='') ? UserTag+'&' :UserTag) + Typeid}&pageSize=200&currentPage=1`
     }else{
       filterUrl = `?pageSize=200&currentPage=1`
@@ -69,6 +71,7 @@ const AnimalList = () => {
 
     const getTotalNumber =  await getAnimalTotal();
     const originAnimalList = await animalFilterList(filterUrl);
+   
     setAnimalList([...originAnimalList])
   }, [filterCheck]);
   const handleFavor =  async() =>{

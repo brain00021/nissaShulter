@@ -103,10 +103,10 @@ function AnimalDetail(){
           <div className="infomationArea">
             <a href={infomation.Link} className="defaultBtn">聯繫收容所</a>
             <div className="defaultDetailBtnGroup">
-              <a className="defaultDetailBtn" style={{flex:2, maxWidth:325}}>
+              <Button className="defaultDetailBtn" style={{flex:2, maxWidth:325}}>
               <i className="favoriteIcon"></i>
               我要追蹤
-              </a>
+              </Button>
               <a className="defaultDetailBtn" style={{flexBasis:30}}>
               <i><Image src={lineIcon}/></i>
               </a>

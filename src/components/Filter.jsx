@@ -16,7 +16,11 @@ const Filter = ({indexStatus = true,onFilter}) => {
   const [fitlerLink,setFilterLink] = useState({
 
   });
+  const [defaultValue,setDefaultValue] = useState({})
   useEffect( async() =>{
+    const oriFilterLinkDefault = JSON.parse(localStorage.getItem('filterLink'));
+    setDefaultValue({...defaultValue,...oriFilterLinkDefault})
+
     const {data} = await animalAllShelter();
     setFilterOriginData([...data])
     let filterCounty = data.reduce((acc,item) => {
@@ -51,6 +55,7 @@ const Filter = ({indexStatus = true,onFilter}) => {
     console.log(value, id,'settingValue')
     if(id ==='countrys'){
       let results = []
+
       if(value === 'all'){
         results = [...filterOriginData]
         results.unshift({STANAME:'全部',ShelterName:'全省收容所',UserTag:'all'})
@@ -59,21 +64,36 @@ const Filter = ({indexStatus = true,onFilter}) => {
           return item.STANAME.slice(0,3) === value
       })
     }
-      console.log(results);
-      
         setFilterData({
           ...filterData,
           shelter:results,
         })
-
-
+    }else if(id === 'shelter'){
+      if(value !== 'all'){
+        const findShelterCountry = filterOriginData.find((item)=> (item.UserTag === value ));
+        setDefaultValue({
+          ...defaultValue,
+          countrys:findShelterCountry.STANAME.slice(0,3)
+        })
+      }
     }
     if(value !== 'all'){
-    setFilterLink({
-      ...fitlerLink,
-      [id]:value,
-    })
-  }
+      const checkShelterKey = Object.keys(fitlerLink).some((item)=> item === 'shelter');
+      if(!checkShelterKey){
+        const findFirstShelter = filterOriginData.find((item) => (item.STANAME.slice(0,3) === value))
+        setFilterLink({
+            ...fitlerLink,
+            [id]:value,
+            ['shelter']:findFirstShelter?.UserTag,
+        })
+      }else{
+        setFilterLink({
+          ...fitlerLink,
+          [id]:value,
+        })
+      }
+
+    }
     console.log(fitlerLink,'fitlerLink')
 
   }
@@ -83,8 +103,13 @@ const Filter = ({indexStatus = true,onFilter}) => {
     const urlParams = Object.entries(fitlerLink).reduce((acc,cur,index)=>{
       const [key,value] = cur;
       if(key ==='countrys' && !checkShelterKey){
-        const findFirstShelter = filterData.shelter.find((item) => (item.STANAME.slice(0,3) === value))
+        const findFirstShelter = filterOriginData.find((item) => (item.STANAME.slice(0,3) === value))
+        setFilterLink({
+          ...fitlerLink,
+          shelter:findFirstShelter?.UserTag,
+        })
         return acc = acc + `shelter=${findFirstShelter?.UserTag}`
+
       }else{
         if(index === Object.entries(fitlerLink).length-1 ){
           return acc = acc + `${key}=${value}`
@@ -96,10 +121,10 @@ const Filter = ({indexStatus = true,onFilter}) => {
     },'')
     console.log(urlParams)
     history.push(`/animalList${urlParams===''? '' : '?'+urlParams }`)
+    localStorage.setItem('filterLink',JSON.stringify(fitlerLink))
     onFilter && onFilter();
-
   }
-  console.log(filterData,'filterData')
+  console.log({fitlerLink,defaultValue},'filterDataSetting')
 
   return (
     <div id="filterWrapper" >
@@ -118,7 +143,7 @@ const Filter = ({indexStatus = true,onFilter}) => {
           {Object.entries(filterData).map((item,index) =>{
             const [key,value] = item;
             return(
-              <Form.Control key={index} as="select" onChange={onChange} id={key} className={key}>
+              <Form.Control key={index} as="select"  defaultValue={defaultValue[key]} onChange={onChange} id={key} className={key}>
                 {value.map((item,Cindex)=>{
                   const checkFilterShelterData = item.hasOwnProperty('STANAME');
                   return(
