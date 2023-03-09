@@ -24,10 +24,16 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import { useTranslation } from 'react-i18next';
 
-
 // fontawesome.library.add(faCheckSquare, faCoffee);
 function App() {
   const { t, i18n } = useTranslation();
+   const [status, setStatus] = useState('');
+  const click = (currentStatus) =>{
+    setStatus(currentStatus)
+  }
+  if(status !== 'openHomepage'){
+    return Redirect("/");
+  }
   return (
     <Router>
       {/* <h1>{t('Welcome to React')}</h1> */}
@@ -36,7 +42,7 @@ function App() {
       
       <Switch>
         <Route exact path="/">
-          <HomePage />
+          <HomePage click={click}/>
         </Route>
         <Route path="/about">
           <AnimalList/>
