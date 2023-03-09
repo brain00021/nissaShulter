@@ -58,7 +58,7 @@ const AnimalCard = ({pic ,Name='', Message='相關資訊',BreedName ,Sex, Accept
       {IsFav ? (<Button onClick={cancelFavorite} className="isFavorite"><Image src={isFavIcon}/></Button>) : (<Button onClick={addFavorite} className="isFavorite"><Image src={isNoFav}/></Button>)}
       
       
-       <Link to={`/animalDetail/${AcceptNum}/${AnimalId}`}>
+       <Link to={`/nissaShulter/animalDetail/${AcceptNum}/${AnimalId}`}>
       <div className="imgWrapper">
       <Card.Img variant="top" src={amialPic+pic ||defaultImg} />
       </div>

@@ -120,7 +120,7 @@ const Filter = ({indexStatus = true,onFilter}) => {
       }
     },'')
     console.log(urlParams)
-    history.push(`/animalList${urlParams===''? '' : '?'+urlParams }`)
+    history.push(`/nissaShulter/animalList${urlParams===''? '' : '?'+urlParams }`)
     localStorage.setItem('filterLink',JSON.stringify(fitlerLink))
     onFilter && onFilter();
   }

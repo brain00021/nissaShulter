@@ -37,22 +37,22 @@ function App() {
       <Header/>
       
       <Switch>
-        <Route  path="/">
+        <Route exact path="/nissaShulter">
           <HomePage />
         </Route>
-        <Route path="/about">
+        <Route path="/nissaShulter/about">
           <AnimalList/>
         </Route>
-        <Route path="/dashboard">
+        <Route path="/nissaShulter/dashboard">
           <Login/>
         </Route>
-        <Route path="/favoriteAnimal">
+        <Route path="/nissaShulter/favoriteAnimal">
           <Favorite/>
         </Route>
-        <Route path="/animalDetail/:animalAcceptNum/:anmialId">
+        <Route path="/nissaShulter/animalDetail/:animalAcceptNum/:anmialId">
           <AnimalDetail/>
         </Route>
-        <Route path="/animalList">
+        <Route path="/nissaShulter/animalList">
         <AnimalList/>
         </Route>
         {/* <button onClick={() => changeLanguage("fr")}>de</button>

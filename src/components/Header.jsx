@@ -26,15 +26,15 @@ const Header =  () => {
   return(
     <div className="header">
       <Navbar bg="light"  expand="lg">
-        <Navbar.Brand as={Link} to="/" >
+        <Navbar.Brand as={Link} to="/nissaShulter" >
           <Image src={LogoImg} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="ml-auto">
 
-            <Nav.Link as={Link} to="/" activeclassname="active">領養須知</Nav.Link>
-            <Nav.Link as={Link} to="/animalList" activeclassname="active" >領養浪浪</Nav.Link>
+            <Nav.Link  as={Link}  to="/nissaShulter#info"  activeclassname="active">領養須知</Nav.Link>
+            <Nav.Link as={Link} to="/nissaShulter/animalList" activeclassname="active" >領養浪浪</Nav.Link>
           
             <DropdownButton id="dropdown-basic-button" title={lang}>
               <Dropdown.Menu>
@@ -42,9 +42,9 @@ const Header =  () => {
                 <Dropdown.Item onClick={() => changeLanguage("en")}>EN</Dropdown.Item>
               </Dropdown.Menu>
             </DropdownButton>
-              <Nav.Link as={Link} to="/favoriteAnimal" activeclassname="active" className="favoriteIcon" ></Nav.Link>
-              <Nav.Link as={Link} to="/login"  activeclassname="active">登入</Nav.Link>
-              <Nav.Link as={Link} to="/signUp"  activeclassname="active">註冊</Nav.Link>
+              <Nav.Link as={Link} to="/nissaShulter/favoriteAnimal" activeclassname="active" className="favoriteIcon" ></Nav.Link>
+              <Nav.Link as={Link} to="/nissaShulter/login"  activeclassname="active">登入</Nav.Link>
+              <Nav.Link as={Link} to="/nissaShulter/signUp"  activeclassname="active">註冊</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
