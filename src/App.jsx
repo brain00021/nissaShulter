@@ -8,8 +8,9 @@ import {
   useRouteMatch,
   useParams,
   NavLink,
-  Redirect,
+  redirect,
 } from "react-router-dom";
+// import { redirect } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./assets/scss/all.scss";
 import { Button , Alert } from 'react-bootstrap';
@@ -28,12 +29,7 @@ import { useTranslation } from 'react-i18next';
 function App() {
   const { t, i18n } = useTranslation();
    const [status, setStatus] = useState('');
-  const click = (currentStatus) =>{
-    setStatus(currentStatus)
-  }
-  if(status !== 'openHomepage'){
-    return Redirect("/");
-  }
+
   return (
     <Router>
       {/* <h1>{t('Welcome to React')}</h1> */}
@@ -41,8 +37,8 @@ function App() {
       <Header/>
       
       <Switch>
-        <Route exact path="/">
-          <HomePage click={click}/>
+        <Route  path="/">
+          <HomePage />
         </Route>
         <Route path="/about">
           <AnimalList/>

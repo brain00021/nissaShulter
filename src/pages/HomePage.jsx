@@ -11,10 +11,7 @@ import picMob2 from 'assets/img/banner/banner2_mob.jpg';
 import pic2 from 'assets/img/banner/banner2.jpg';
 const bannerGroup = [{web:pic,mob:picMob},{web:pic2,mob:picMob2}]
 
-function HomePage(click) {
-  useEffect(()=>{
-    click('openHomepage');
-  })
+function HomePage() {
 
   return(
     <div className="indexWrapper">
