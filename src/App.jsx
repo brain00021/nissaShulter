@@ -58,13 +58,13 @@ function App() {
         {/* <button onClick={() => changeLanguage("fr")}>de</button>
         <button onClick={() => changeLanguage("en")}>en</button> */}
       </Switch>
-      <MessengerCustomerChat
+      {/* <MessengerCustomerChat
         pageId="111895200941097"
         appId=""
         loggedInGreeting='歡迎您到浪浪不在流浪之家，有任何疑問歡迎在線上提問~~'
         loggedOutGreeting='歡迎您到浪浪不在流浪之家，有任何疑問歡迎在線上提問~~'
         attribution="setup_tool"
-      />
+      /> */}
       <Footer/>
     </Router>
   );

@@ -16,6 +16,7 @@ import axios from "axios";
 import useUtils from "../utils.js";
 import warningImg from "assets/img/icon/warmingIcon.png"
 import FilterSection from "components/Filter.jsx"
+import loadingImg from "assets/img/loading.gif"
 const WarningWrapper = () => {
   return(
     <div className="warmingWrapper">
@@ -47,7 +48,7 @@ const AnimalList = () => {
   const [animalList, setAnimalList] = useState([]);
   const {getAnimalTotal,animalFilterList,checkIsFav} = useUtils();
   const [filterCheck,setFilterCheck] = useState(0);
-  
+  const [loading,setLoading] = useState(false);
   const handleFilter = async() =>{
     console.log('check')
     setFilterCheck(filterCheck +1)
@@ -55,7 +56,7 @@ const AnimalList = () => {
   useEffect(async() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    
+    setLoading(true)
 
     // get parse
     //?Typeid=1&UserTag=LAAAG&pageSize=200&currentPage=1&sortDirection=DESC&sortFields=AcceptDate
@@ -68,9 +69,12 @@ const AnimalList = () => {
       filterUrl = `?pageSize=200&currentPage=1`
     }
     console.log(filterUrl,'filterUrl')
+   
 
     const getTotalNumber =  await getAnimalTotal();
     const originAnimalList = await animalFilterList(filterUrl);
+    debugger;
+    setLoading(false)
    
     setAnimalList([...originAnimalList])
   }, [filterCheck]);
@@ -85,7 +89,7 @@ const AnimalList = () => {
     <FilterSection indexStatus={false} onFilter={handleFilter}></FilterSection>
     <WarningWrapper/>
     <Container >
-      {animalList.length > 0 ? (
+      {loading ? <div className="loading"><Image src={loadingImg}/></div>  : animalList.length > 0 ? (
         <Row>
         {animalList.map((item,index)=>{
             return(<Col sm={6} md={4} lg={3} key={index} ><AnimalCard AcceptNum={item.AcceptNum} AnimalId={item.AnimalId} Name={item?.Name} BreedName={item?.BreedName} pic={item.pic} Sex={item?.Sex} Message={item?.areaName || '未知'}  IsFav={item?.IsFav} handleFavor={handleFavor}></AnimalCard></Col>)
@@ -93,7 +97,7 @@ const AnimalList = () => {
           })}
         </Row>
       ):(
-        <h3> 找不到資料 </h3>
+        <h3 className="errorData"> 找不到資料 </h3>
       )}
 
      

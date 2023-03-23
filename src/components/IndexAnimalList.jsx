@@ -57,8 +57,8 @@ const IndexAnimalList = () => {
   }
   return (
     <Container className="IndexAnimalCard">
-      <h2>待認養的毛小孩 </h2>
-      <h6>讓我們不只有十二夜，還要陪你度過千千萬萬個夜。</h6>
+      <h2>Your Fuffy Friend Needs Help </h2>
+      <h6>Let them to be your family</h6>
       {fiterAnimalItem.length > 0 &&  (<Swiper
         spaceBetween={10}
         slidesPerView={1}
@@ -103,7 +103,7 @@ const IndexAnimalList = () => {
         <AnimalCard></AnimalCard>
         </Col> */}
       <div className="btnWrapper">
-        <Link to="/animalList" className="defaultBtn">尋找更多的狗狗</Link>
+        <Link to="/nissaShulter/animalList" className="defaultBtn">尋找更多的狗狗</Link>
       </div>
       
     </Container>

@@ -130,8 +130,8 @@ const Filter = ({indexStatus = true,onFilter}) => {
     <div id="filterWrapper" >
       {indexStatus && (
         <div className="titleWrapper">
-          <h2>尋找我的毛小孩 </h2>
-          <h6>找尋距離近的收容所，快速搜尋附近的毛小孩</h6>
+          <h2>Search My Fuffy Family </h2>
+          <h6>There some close shulter maybe close to you </h6>
         </div>
       )}
 

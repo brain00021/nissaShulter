@@ -113,7 +113,11 @@
 }
 
 // animalFilterSetting
-
+.loading {
+  img {
+    width: 100%;
+  }
+}
 .animalFilterWrapper {
   #filterWrapper {
     .filterSection {

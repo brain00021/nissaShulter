@@ -35,16 +35,16 @@ const Header =  () => {
 
             <Nav.Link  as={Link}  to="/nissaShulter#info"  activeclassname="active">領養須知</Nav.Link>
             <Nav.Link as={Link} to="/nissaShulter/animalList" activeclassname="active" >領養浪浪</Nav.Link>
-          
+            {/*           
             <DropdownButton id="dropdown-basic-button" title={lang}>
               <Dropdown.Menu>
                 <Dropdown.Item onClick={() => changeLanguage("fr")}>FR</Dropdown.Item>
                 <Dropdown.Item onClick={() => changeLanguage("en")}>EN</Dropdown.Item>
               </Dropdown.Menu>
-            </DropdownButton>
+            </DropdownButton> */}
               <Nav.Link as={Link} to="/nissaShulter/favoriteAnimal" activeclassname="active" className="favoriteIcon" ></Nav.Link>
-              <Nav.Link as={Link} to="/nissaShulter/login"  activeclassname="active">登入</Nav.Link>
-              <Nav.Link as={Link} to="/nissaShulter/signUp"  activeclassname="active">註冊</Nav.Link>
+              {/* <Nav.Link as={Link} to="/nissaShulter/login"  activeclassname="active">登入</Nav.Link>
+              <Nav.Link as={Link} to="/nissaShulter/signUp"  activeclassname="active">註冊</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
